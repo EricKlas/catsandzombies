@@ -9,19 +9,19 @@
 </head>
 
 <body>
-    <div id="settings" class="settings">
+    <div>
 
-        <div id="titlename"></div>
-        <script src="script/titlescreen.js"></script>
-
-        <h2>Map size</h2>
-        <select id="boardSize">
+        <div class="backgroundimage">
+            <div id="titlename"></div>
+            <script src="script/titlescreen.js"></script>
+        <h2 class="selectsize">Map size</h2>
+        <select id="boardSize" class="selectsizedropper"> 
             <option value="5">5x5</option>
             <option value="7">7x7</option>
             <option value="10">10x10</option>
             <option value="15">15x15</option>
         </select>
-        <button onclick="saveSettings()">Save Settins</button>
+        <button onclick="saveSettings()" class="selectsizedropper">Save Settings</button>
         <script src="script/settings.js"></script>
     </div>
 </body>

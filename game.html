@@ -9,21 +9,40 @@
 <body>
     <div id="titlename"></div>
     <script src="script/titlescreen.js"></script>
-
-    <div>
+ 
+    <div id="locationdiv" class="locationdiv">
+        <div class="compass" id="catcompass">
+            <p>Du kan höra en kat i den här riktnigen</p>
+            <img src="images/pointer1.png" name="catpointer" class="pointer catpointer" id="catarrow">
+        </div>
         <img id="locationimage" src="images/mountains1.png" class="locationcontainer">
-        <h3 id="locationtext" class="textcontainer">Du står i skogen och kan se ett berg i bakgrunden</h3>
+        <div class="compass" id="zombiecompass">
+            <p>Du här ljud från en zombie i den är riktningen</p>
+            <img src="images/pointer1.png" name="zombiepointer" class="pointer zombiepointer" id="zombiearrow">
+        </div>
     </div>
+    <div>
+    <h3 id="locationtext" class="textcontainer">Du har kommit till en skog för att leta efter katter som har försvunnit!</h3>
+        <p class="scorescreen" id="catscore">Du har hittat 0 katter!</p>
+    </div>
+    <div>
     <button id="buttonup" onclick="moveplayer('player', 'up')" class="movebuttons moveright"><div class="arrow up"></div></button>
     <br>
-    <button id="buttonleft" onclick="moveplayer('player', 'left')" class="movebuttons"><div class="arrow left"></div></button>
-    <button id="buttonright" onclick="moveplayer('player', 'right')" class="movebuttons moveright"><div class="arrow right"></div></button>
+    <button id="buttonleft" onclick="moveplayer('player', 'left')" class="movebuttons"><div class="arrow left">
+        
+    </div></button>
+    <button id="buttonright" onclick="moveplayer('player', 'right')" class="movebuttons moveright">
+        <div class="arrow right"></div></button>
     <br>
-    <button id="buttondown" onclick="moveplayer('player', 'down')" class="movebuttons moveright"><div class="arrow down"></div></button>
+    <button id="buttondown" onclick="moveplayer('player', 'down')" class="movebuttons moveright">
+        <div class="arrow down"></div></button>
+</div>
     <script src="script/movement.js"></script>
     <script src="script/location.js"></script>
     <script src="script/gamelogic.js"></script>
     <script src="script/mapgeneration.js"></script>
+    <div>
+    </div>
     <div class="map-container"></div>
 </body>
 </html>

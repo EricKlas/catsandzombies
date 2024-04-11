@@ -5,6 +5,39 @@ var characters = [
     { name: "zombie", role:"zombie", coords: [{x: randomstartposition(size), z: randomstartposition(size)}] }
 ]
 
+function fetchName() {
+    return new Promise((resolve, reject) => {
+        fetch('https://api.api-ninjas.com/v1/randomuser', {
+            method: 'GET',
+            headers: new Headers({
+                'X-Api-Key': '0SdiJM+HXPbdpg973bh43w==ZTSJKQf13WtqqxiM',
+                'Content-Type': 'application/json'
+            }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => resolve(data.name))
+        .catch(error => reject('Error fetching name: ' + error.message));
+    });
+}
+
+
+function updateCatName() {
+    const catIndex = characters.findIndex(character => character.role === 'cat');
+
+        fetchName()
+            .then(newName => {
+                characters[catIndex].name = newName;
+                console.log('Cat name updated:', characters[catIndex]);
+            })
+            .catch(error => console.error('Error updating cat name:', error));
+}
+
+
 function createGameBoard(rows, columns, characters) {
     let board = new Array(rows);
     for (let i = 0; i < rows; i++) {
@@ -18,11 +51,10 @@ function createGameBoard(rows, columns, characters) {
         if (char.coords.length > 0) {
             const {x, z} = char.coords[0]
             if (x >= 0 && x < rows && z >= 0 && z < columns) {
-                board[x][z].character = char.name
+                board[x][z].character = char.role
             }
         }
     });
-
     return board;
 }
 
@@ -30,7 +62,6 @@ function randomstartposition(size)
 {
     return 2 + Math.floor(Math.random() * (size - 2));
 }
-
 
 window.onload = function() {
     let gameBoard = createGameBoard(size, size, characters)
@@ -45,7 +76,8 @@ window.onload = function() {
             cellElement.className = "board-cell"
 
             if (cell.character) {
-                cellElement.classList.add(`${cell.character}-cell`)
+                let className = `${cell.character}-cell`.replace(/\s+/g, '-');
+                cellElement.classList.add(className);
             }
 
             boardContainer.appendChild(cellElement)
@@ -54,6 +86,9 @@ window.onload = function() {
 
     localStorage.setItem('boardSize', size)
     document.body.appendChild(boardContainer)
+    updateCatName()
+    catCompass()
+    zombieCompass()
     checkMapLimits()
 };
 
@@ -118,7 +153,8 @@ function updateGameBoard()
             cellElement.className = "board-cell"
 
             if (cell.character) {
-                cellElement.classList.add(`${cell.character}-cell`)
+                let className = `${cell.character}-cell`.replace(/\s+/g, '-');
+                cellElement.classList.add(className);
             }
 
             newBoardContainer.appendChild(cellElement)
@@ -126,6 +162,8 @@ function updateGameBoard()
     })
 
     document.body.appendChild(newBoardContainer)
+    catCompass()
+    zombieCompass()
     checkMapLimits()
     checkEncounters()
 }
