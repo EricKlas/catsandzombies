@@ -1,10 +1,10 @@
 h1
 {
     position: relative;
-    margin-left: 37vw;
-    color:aqua;
+    margin: auto;
+    color:yellowgreen;
     margin-bottom: 1.0em;
-    font-size: 4em;
+    font-size: 3em;
 }
 h2
 {
@@ -17,6 +17,21 @@ h1 a
     text-decoration: none; 
 }
 
+.item1 { grid-area: header; }
+.item2 { grid-area: score; }
+.item3 { grid-area: main; }
+.item4 { grid-area: movement; }
+.item5 { grid-area: map; }
+.item6 { grid-area: compass; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header main main main main main'
+    'score movement movement movement movement movement'
+    'score compass compass compass compass map';
+}
+
 .backgroundimage
 {
     background-image:url(../images/mountainstars.jpg);
@@ -24,6 +39,20 @@ h1 a
     height: 880px; 
 }
 
+.locationimage {
+    position: relative;
+    height: 300px;
+    width: 500px;
+    background-color: #f0f0f0;
+}
+
+.catimage {
+    position: absolute;
+    height: 150px;
+    width: 100px;
+    left: 750px;
+    top: 150px;
+}
 .selectsize
 {
     color: cyan;
@@ -58,25 +87,6 @@ h1 a
     background-color: rgba(188, 188, 188, 1);
 }
 
-.checkbox
-{
-    display: flex;
-    flex-direction: column;
-    margin:auto;
-    margin-bottom: 5em;
-    width: 20px;
-    height: 20px;
-}
-
-.checkboxlabel
-{
-    margin:auto;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-size: 1.5em;
-}
-
 .board-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
@@ -95,17 +105,6 @@ h1 a
     background-color: orange ;
 }
 
-.locationcontainer {
-    width: 30vw;
-    height: 15vw;
-}
-.textcontainer
-{
-    position: relative;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-left: 37vw;
-
-}
 .movebuttons {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     display: inline-flex; 
@@ -118,6 +117,11 @@ h1 a
     cursor: pointer;
     margin: 5px;
     background-color: rgba(0, 139, 67, 0.717);
+}
+
+.moveright
+{
+    margin-left: 68px;
 }
 
 .movebuttons:hover {
@@ -146,11 +150,6 @@ h1 a
 .down {
     transform: rotate(45deg);
 }
-  
-.moveright
-{
-    margin-left: 68px;
-}
 
 .scorescreen
 {
@@ -170,34 +169,9 @@ h1 a
     background-color: red; 
 }
 
-.catimage
-{
-    width: 10vw;
-    height: 15vw;
-}
-
-.locationdiv {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    width: 37vw;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .compass {
     position: absolute;
     text-align: center;
-}
-
-#catcompass {
-    top: 380px;
-    right: -350px; 
-}
-
-#zombiecompass {
-    top: 340px;
-    right: -550px;
 }
 
 .pointer {
@@ -206,13 +180,6 @@ h1 a
     padding: 10px;
     height: 50px;
     width: 50px;
-    margin: 0 auto; 
     display: block;
-}
-
-
-#locationdiv .catimage {
-    position: absolute;
-    top: 80px;
-    left: 150px;
+    margin-right: 400px;
 }
