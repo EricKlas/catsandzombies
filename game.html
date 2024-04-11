@@ -14,14 +14,15 @@
         <img id="locationimage" src="images/mountains1.png" class="locationcontainer">
         <h3 id="locationtext" class="textcontainer">Du står i skogen och kan se ett berg i bakgrunden</h3>
     </div>
-    <button onclick="moveplayer('player', 'up')" class="movebuttons moveright"><div class="arrow up"></div></button>
+    <button id="buttonup" onclick="moveplayer('player', 'up')" class="movebuttons moveright"><div class="arrow up"></div></button>
     <br>
-    <button onclick="moveplayer('player', 'left')" class="movebuttons"><div class="arrow left"></div></button>
-    <button onclick="moveplayer('player', 'right')" class="movebuttons moveright"><div class="arrow right"></div></button>
+    <button id="buttonleft" onclick="moveplayer('player', 'left')" class="movebuttons"><div class="arrow left"></div></button>
+    <button id="buttonright" onclick="moveplayer('player', 'right')" class="movebuttons moveright"><div class="arrow right"></div></button>
     <br>
-    <button onclick="moveplayer('player', 'down')" class="movebuttons moveright"><div class="arrow down"></div></button>
+    <button id="buttondown" onclick="moveplayer('player', 'down')" class="movebuttons moveright"><div class="arrow down"></div></button>
     <script src="script/movement.js"></script>
     <script src="script/location.js"></script>
+    <script src="script/gamelogic.js"></script>
     <script src="script/mapgeneration.js"></script>
     <div class="map-container"></div>
 </body>

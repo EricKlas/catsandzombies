@@ -54,7 +54,50 @@ window.onload = function() {
 
     localStorage.setItem('boardSize', size)
     document.body.appendChild(boardContainer)
+    checkMapLimits()
 };
+
+function mapLimitsX(characters)
+{
+    if (characters.coords[0].x === 0)
+    {
+        document.getElementById("buttonup").style.backgroundColor = "rgba(149, 126, 116, 0.717)"
+    }
+     else if (characters.coords[0].x === size -1)
+     {
+        document.getElementById("buttondown").style.backgroundColor = "rgba(149, 126, 116, 0.717)"
+     }
+    else 
+    {
+        document.getElementById("buttonup").style.backgroundColor = "rgba(0, 139, 67, 0.717)"
+        document.getElementById("buttondown").style.backgroundColor = "rgba(0, 139, 67, 0.717)"
+    }
+}
+
+function mapLimitsZ(characters)
+{
+if (characters.coords[0].z === 0)
+{
+    document.getElementById("buttonleft").style.backgroundColor = "rgba(149, 126, 116, 0.717)"
+}
+ else if (characters.coords[0].z === size -1)
+ {
+    document.getElementById("buttonright").style.backgroundColor = "rgba(149, 126, 116, 0.717)"
+ }
+else 
+{
+    document.getElementById("buttonleft").style.backgroundColor = "rgba(0, 139, 67, 0.717)"
+    document.getElementById("buttonright").style.backgroundColor = "rgba(0, 139, 67, 0.717)"
+}
+}
+
+function checkMapLimits()
+{
+    let character = characters.find(char => char.role === "player")
+
+    mapLimitsX(character)
+    mapLimitsZ(character)
+}
 
 
 function updateGameBoard()
@@ -83,4 +126,6 @@ function updateGameBoard()
     })
 
     document.body.appendChild(newBoardContainer)
+    checkMapLimits()
+    checkEncounters()
 }

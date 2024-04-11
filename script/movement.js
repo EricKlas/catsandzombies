@@ -1,33 +1,31 @@
-function randomnumber() 
-{ 
+function randomnumber() {
     return Math.floor(Math.random() * 3);
 }
 
 
-function moveZombie(charRole, playerRole)
-{
+function moveZombie(charRole, playerRole) {
     let character = characters.find(char => char.role === charRole)
     let player = characters.find(player => player.role === playerRole)
 
     number = randomnumber()
 
-    switch(number)
-    {
-        case 0: if (character.coords[0].x > player.coords[0].x) {
-            character.coords[0].x -= 1;
-        } else if (character.coords[0].x < player.coords[0].x) {
-            character.coords[0].x += 1;
-        }
-         else if (character.coords[0].z > player.coords[0].z) {
-            character.coords[0].z -= 1;
-        } else if (character.coords[0].z < player.coords[0].z) {
-            character.coords[0].z += 1;
-        }
-        else{
-            break
-        }
-        case 1:break
-        case 2:break
+    switch (number) {
+        case 0:
+            if (character.coords[0].x > player.coords[0].x) {
+                character.coords[0].x -= 1;
+            } else if (character.coords[0].x < player.coords[0].x) {
+                character.coords[0].x += 1;
+            }
+            else if (character.coords[0].z > player.coords[0].z) {
+                character.coords[0].z -= 1;
+            } else if (character.coords[0].z < player.coords[0].z) {
+                character.coords[0].z += 1;
+            }
+            else {
+                break
+            }
+        case 1: break
+        case 2: break
         default: return
     }
 
@@ -37,14 +35,48 @@ function moveZombie(charRole, playerRole)
 function moveplayer(charRole, direction) {
     let character = characters.find(char => char.role === charRole)
 
-    switch(direction) {
-       case 'up': character.coords[0].x -= 1; break
-       case 'down': character.coords[0].x += 1; break
-       case 'left': character.coords[0].z -= 1; break
-       case 'right': character.coords[0].z += 1; break
-       default: return
+    switch (direction) {
+        case 'up':
+            if (character.coords[0].x === 0) {
+                break
+            }
+            else {
+                ChangePostion(character, direction)
+            } break
+        case 'down':
+            if (character.coords[0].x === size - 1) {
+                break
+            }
+            else {
+                ChangePostion(character, direction)
+            } break;
+        case 'left':
+            if (character.coords[0].z === 0) {
+                break
+            }
+            else {
+                ChangePostion(character, direction)
+            } break
+        case 'right': if (character.coords[0].z === size - 1) {
+            break
+        }
+        else {
+            ChangePostion(character, direction)
+        } break
+        default: return
     }
-    
+}
+
+function ChangePostion(character, direction) {
+
+    switch (direction) {
+        case 'up': character.coords[0].x -= 1; break
+        case 'down': character.coords[0].x += 1; break
+        case 'left': character.coords[0].z -= 1; break
+        case 'right': character.coords[0].z += 1; break
+        default: return
+    }
+
     moveZombie('zombie', 'player')
     LocationSelect()
     updateGameBoard()

@@ -1,3 +1,6 @@
+let previousLocation = 0
+
+
 function locationChange(img, text)
 {
     document.getElementById("locationimage").src=img;
@@ -16,6 +19,12 @@ function LocationSelect()
 {
 
     const number = randomlocation();
+
+    if (number === previousLocation)
+    {
+        LocationSelect()
+    }
+    else{
     switch(number)
         {
             case 0: locationChange("images/mountains1.png", "Du står i skogen och kan se ett berg i bakgrunden");  break;
@@ -40,4 +49,6 @@ function LocationSelect()
             case 19: locationChange("images/aurora1.jpg", "Du står ute på ett fält och kan se norrskenet");  break;
             default: return;
         }
+    }
+        previousLocation = number
 }
