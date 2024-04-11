@@ -51,7 +51,7 @@ h1 a
     height: 150px;
     width: 100px;
     left: 750px;
-    top: 150px;
+    top: 15 0px;
 }
 .selectsize
 {
@@ -163,10 +163,10 @@ h1 a
     background-color: blue;
 }
 .cat-cell {
-    background-color: green;
+    background-color: orange;
 }
 .zombie-cell {
-    background-color: red; 
+    background-color: orange; 
 }
 
 .compass {
