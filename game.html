@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cats and Zombies</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="titlename"></div>
+    <script src="script/titlescreen.js"></script>
+
+    <div>
+        <img id="locationimage" src="images/mountains1.png" class="locationcontainer">
+        <h3 id="locationtext" class="textcontainer">Du står i skogen och kan se ett berg i bakgrunden</h3>
+    </div>
+    <button onclick="moveplayer('player', 'up')" class="movebuttons moveright"><div class="arrow up"></div></button>
+    <br>
+    <button onclick="moveplayer('player', 'left')" class="movebuttons"><div class="arrow left"></div></button>
+    <button onclick="moveplayer('player', 'right')" class="movebuttons moveright"><div class="arrow right"></div></button>
+    <br>
+    <button onclick="moveplayer('player', 'down')" class="movebuttons moveright"><div class="arrow down"></div></button>
+    <script src="script/movement.js"></script>
+    <script src="script/location.js"></script>
+    <script src="script/mapgeneration.js"></script>
+    <div class="map-container"></div>
+</body>
+</html>
