@@ -34,9 +34,9 @@ h1 a
 
 .backgroundimage
 {
-    background-image:url(../images/mountainstars.jpg);
-    width: fill;
-    height: 880px; 
+    background-color: aliceblue;
+    width: 100vw;
+    height: 100vw; 
 }
 
 .locationimage {
@@ -61,7 +61,6 @@ h1 a
 
 .selectsizedropper
 {
-    margin-left: 43vw;
     margin-bottom: 3px;
     font-size: 1.5em;
 }
