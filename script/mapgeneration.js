@@ -16,18 +16,18 @@ function fetchName() {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Network response was not ok')
             }
-            return response.json();
+            return response.json()
         })
         .then(data => resolve(data.name))
-        .catch(error => reject('Error fetching name: ' + error.message));
+        .catch(error => reject('Error fetching name: ' + error.message))
     });
 }
 
 
 function updateCatName() {
-    const catIndex = characters.findIndex(character => character.role === 'cat');
+    const catIndex = characters.findIndex(character => character.role === 'cat')
 
         fetchName()
             .then(newName => {
@@ -60,7 +60,7 @@ function createGameBoard(rows, columns, characters) {
 
 function randomstartposition(size) 
 {
-    return 2 + Math.floor(Math.random() * (size - 2));
+    return 2 + Math.floor(Math.random() * (size - 2))
 }
 
 window.onload = function() {
@@ -77,7 +77,7 @@ window.onload = function() {
 
             if (cell.character) {
                 let className = `${cell.character}-cell`.replace(/\s+/g, '-');
-                cellElement.classList.add(className);
+                cellElement.classList.add(className)
             }
 
             boardContainer.appendChild(cellElement)
